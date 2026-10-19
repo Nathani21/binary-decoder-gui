@@ -13,6 +13,14 @@ def decode_bits(raw: str) -> str:
     chunks = [bits[i:i + 8] for i in range(0, len(bits), 8)]
     return "".join(chr(int(chunk, 2)) for chunk in chunks)
 
+def encode_text(text: str) -> str:
+    """Convert text into space-separated 8-bit binary."""
+    if not text:
+        raise ValueError("Please enter some text first.")
+    if any(ord(ch) > 255 for ch in text):
+        raise ValueError("Only characters up to code 255 are supported.")
+    return " ".join(format(ord(ch), "08b") for ch in text)
+
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -27,6 +35,7 @@ class App(tk.Tk):
         buttons = tk.Frame(self)
         buttons.pack(fill="x", padx=12)
         tk.Button(buttons, text="Decode", command=self.on_decode).pack(side="left")
+        tk.Button(buttons, text="Encode", command=self.on_encode).pack(side="left", padx=6)
         tk.Button(buttons, text="Copy output", command=self.on_copy).pack(side="left", padx=6)
         tk.Button(buttons, text="Clear", command=self.on_clear).pack(side="left")
 
@@ -44,6 +53,13 @@ class App(tk.Tk):
         raw = self.input_box.get("1.0", "end")
         try:
             self.set_output((decode_bits(raw)))
+        except ValueError as err:
+            messagebox.showerror("Invalid input", str(err))
+
+    def on_encode(self):
+        raw = self.input_box.get("1.0", "end").strip()
+        try:
+            self.set_output(encode_text(raw))
         except ValueError as err:
             messagebox.showerror("Invalid input", str(err))
 
