@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import filedialog, messagebox
 
 def decode_bits(raw: str) -> str:
     """Convert a string of 8-bit binary groups into text."""
@@ -36,6 +36,7 @@ class App(tk.Tk):
         buttons.pack(fill="x", padx=12)
         tk.Button(buttons, text="Decode", command=self.on_decode).pack(side="left")
         tk.Button(buttons, text="Encode", command=self.on_encode).pack(side="left", padx=6)
+        tk.Button(buttons, text="Open file", command=self.on_open).pack(side="left")
         tk.Button(buttons, text="Copy output", command=self.on_copy).pack(side="left", padx=6)
         tk.Button(buttons, text="Clear", command=self.on_clear).pack(side="left")
 
@@ -62,6 +63,22 @@ class App(tk.Tk):
             self.set_output(encode_text(raw))
         except ValueError as err:
             messagebox.showerror("Invalid input", str(err))
+    
+    def on_open(self):
+        path = filedialog.askopenfilename(
+            title="Open a text file",
+            filetypes=[("Text files", "*.txt"), ("All files", "*.*")],
+        )
+        if not path:
+            return  # user cancelled
+        try:
+            with open(path, encoding="utf-8") as f:
+                content = f.read()
+        except (OSError, UnicodeDecodeError) as err:
+            messagebox.showerror("Could not open file", str(err))
+            return
+        self.input_box.delete("1.0", "end")
+        self.input_box.insert("1.0", content)
 
     def on_copy(self):
         text = self.output_box.get("1.0", "end").strip()
