@@ -4,6 +4,7 @@ A simple Python/Tkinter app that decodes binary into text. Built to practice Pyt
 ## Features
 - Decode binary (8-bit groups) into text
 - Encode text into binary
+- Open a .txt file of binary and load it into the input box
 - Copy output, clear fields, and friendly error messages for invalid input
 
 ## How to run
