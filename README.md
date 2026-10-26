@@ -1,10 +1,12 @@
 # binary-decoder-gui
 A simple Python/Tkinter app that decodes binary into text. Built to practice Python and Git, and improved over time.
 
+![Tests](https://github.com/Nathani21/binary-decoder-gui/actions/workflows/tests.yml/badge.svg)
+
 ## Features
 - Decode binary (8-bit groups) into text
 - Encode text into binary
-- Open a .txt file of binary and load it into the input boxhttps://github.com/Nathani21/binary-decoder-gui/pull/new/docs/readme-open-file
+- Open a .txt file of binary and load it into the input box
 - Copy output, clear fields, and friendly error messages for invalid input
 
 ## How to run
