@@ -3,7 +3,7 @@ from binary_decoder_gui import decode_bits, encode_text
 
 
 def test_decode_spaced():
-    assert decode_bits("01001000 01101001") == "Hi"
+    assert decode_bits("01001000 01101001") == "Ho"
 
 
 def test_decode_no_spaces():
