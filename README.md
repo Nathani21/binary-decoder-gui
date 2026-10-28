@@ -10,6 +10,7 @@ A simple Python/Tkinter app that decodes binary into text. Built to practice Pyt
 - Copy output, clear fields, and friendly error messages for invalid input
 
 ## How to run
+Windows users can skip Python: download `binary_decoder_gui.exe` from the [Releases page](https://github.com/Nathani21/binary-decoder-gui/releases).
 1. Install [Python 3](https://www.python.org/downloads/). Tkinter comes with it on Windows.
 2. Clone the repo:
 ```
