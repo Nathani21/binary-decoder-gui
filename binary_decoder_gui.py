@@ -32,7 +32,7 @@ def encode_text(text: str) -> str:
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Binary Decoder v1.0")
+        self.title("Binary Decoder v1.1")
         self.geometry("480x420")
         self.minsize(360, 340)
         try:
