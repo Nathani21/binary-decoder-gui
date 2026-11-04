@@ -1,5 +1,13 @@
+import os
+import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
+
+
+def resource_path(relative_path):
+    """Find a bundled file, both when run from source and inside the .exe."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, relative_path)
 
 def decode_bits(raw: str) -> str:
     """Convert a string of 8-bit binary groups into text."""
@@ -27,6 +35,10 @@ class App(tk.Tk):
         self.title("Binary Decoder v1.0")
         self.geometry("480x420")
         self.minsize(360, 340)
+        try:
+            self.iconbitmap(resource_path(os.path.join("assets", "icon.ico")))
+        except tk.TclError:
+            pass  # icon missing; the app still works
 
         tk.Label(self, text="Enter binary (8-bit groups):").pack(anchor="w", padx=12, pady=(12, 0))
         self.input_box = tk.Text(self, height=8, wrap="word", font=("Consolas", 11))
