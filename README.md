@@ -8,6 +8,7 @@ A simple Python/Tkinter app that converts binary to text and text to binary. Bui
 - Encode text into binary
 - Open a .txt file of binary and load it into the input box
 - Copy output, clear fields, and friendly error messages for invalid input
+- Custom app icon
 
 ## How to run
 Windows users can skip Python: download `binary_decoder_gui.exe` from the [Releases page](https://github.com/Nathani21/binary-decoder-gui/releases).
